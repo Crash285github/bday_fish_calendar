@@ -14,8 +14,12 @@ class MonthWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(time.monthName),
-        for (final week in monthWeeks) WeekWidget(time: week.first),
+        Text(
+          time.monthName,
+          style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+        ),
+        for (final week in monthWeeks)
+          WeekWidget(time: week.first, month: time.month),
       ],
     );
   }

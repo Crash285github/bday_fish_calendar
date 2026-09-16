@@ -7,6 +7,16 @@ extension DateTimeExtensions on DateTime {
   bool get isSaturday => weekday == DateTime.saturday;
   bool get isSunday => weekday == DateTime.sunday;
 
+  DateTime get lastMonday {
+    final int daysSinceMonday = (weekday - DateTime.monday) % 7;
+    return subtract(Duration(days: daysSinceMonday));
+  }
+
+  DateTime get nextMonday {
+    final int daysUntilNextMonday = (DateTime.monday - weekday) % 7;
+    return add(Duration(days: daysUntilNextMonday));
+  }
+
   List<DateTime> get weekDays {
     final int daysSinceMonday = (weekday - DateTime.monday) % 7;
     final int lastMonday = day - daysSinceMonday;
@@ -25,11 +35,18 @@ extension DateTimeExtensions on DateTime {
   }
 
   List<List<DateTime>> get monthWeeks {
-    final List<DateTime> days = monthDays;
+    final DateTime firstDay = DateTime(year, month).lastMonday;
+    final DateTime lastDay = DateTime(year, month + 1, 0).lastMonday;
     final List<List<DateTime>> weeks = [];
-    for (int i = 0; i < days.length; i += 7) {
-      weeks.add(days.sublist(i, (i + 7).clamp(0, days.length)));
+
+    for (
+      DateTime weekStart = firstDay;
+      weekStart.isBefore(lastDay) || weekStart.isAtSameMomentAs(lastDay);
+      weekStart = weekStart.add(const Duration(days: 7))
+    ) {
+      weeks.add(weekStart.weekDays);
     }
+
     return weeks;
   }
 

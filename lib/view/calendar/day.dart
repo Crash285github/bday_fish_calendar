@@ -7,8 +7,10 @@ class DayWidget extends StatelessWidget {
   final DateTime? time;
 
   @override
-  Widget build(BuildContext context) => Card(
-    color: time?.isToday == true ? Colors.purple : null,
+  Widget build(BuildContext context) => ColoredBox(
+    color: time?.isToday == true
+        ? Colors.purple
+        : Theme.of(context).colorScheme.onPrimary,
     child: SizedBox(
       height: 64,
       width: 64,
