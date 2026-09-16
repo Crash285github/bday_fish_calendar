@@ -30,6 +30,12 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Format code
+        run: flutter format .
+
+      - name: Analyze code
+        run: flutter analyze
+
       - name: Build web
         run: flutter build web --release --base-href /bday_fish_calendar/
 

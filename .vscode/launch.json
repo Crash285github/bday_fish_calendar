@@ -5,18 +5,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "bday_fish_calendar",
+      "name": "Debug",
       "request": "launch",
       "type": "dart"
     },
     {
-      "name": "bday_fish_calendar (profile mode)",
+      "name": "Profile",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile"
     },
     {
-      "name": "bday_fish_calendar (release mode)",
+      "name": "Release",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release"
