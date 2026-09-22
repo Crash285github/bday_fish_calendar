@@ -7,27 +7,15 @@ class YearWidget extends StatelessWidget {
   final int year;
 
   @override
-  Widget build(BuildContext context) => FittedBox(
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        for (int month = 1; month <= 12; month += 4)
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              for (int i = 0; i < 4; i++)
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: FittedBox(
-                    alignment: Alignment.topCenter,
-                    child: MonthWidget(time: DateTime(year, month + i)),
-                  ),
-                ),
-            ],
-          ),
-      ],
-    ),
+  Widget build(BuildContext context) => GridView.count(
+    crossAxisCount: 4,
+    childAspectRatio: 10 / 11,
+    padding: const EdgeInsets.all(32),
+    mainAxisSpacing: 16,
+    crossAxisSpacing: 16,
+    children: [
+      for (int month = 1; month <= 12; month++)
+        MonthWidget(time: DateTime(year, month)),
+    ],
   );
 }

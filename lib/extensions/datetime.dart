@@ -34,6 +34,27 @@ extension DateTimeExtensions on DateTime {
     );
   }
 
+  List<DateTime?> get monthDaysPadded {
+    final DateTime firstDay = DateTime(year, month).lastMonday;
+    final DateTime lastDay = DateTime(year, month + 1).nextMonday;
+
+    final List<DateTime?> days = [];
+
+    for (
+      DateTime day = firstDay;
+      day.isBefore(lastDay) || day.isAtSameMomentAs(lastDay);
+      day = day.add(const Duration(days: 1))
+    ) {
+      if (day.month == month) {
+        days.add(day);
+      } else {
+        days.add(null);
+      }
+    }
+
+    return days;
+  }
+
   List<List<DateTime>> get monthWeeks {
     final DateTime firstDay = DateTime(year, month).lastMonday;
     final DateTime lastDay = DateTime(year, month + 1, 0).lastMonday;

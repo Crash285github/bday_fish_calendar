@@ -1,5 +1,5 @@
 import "package:bday_fish_calendar/extensions/datetime.dart";
-import "package:bday_fish_calendar/view/calendar/week.dart";
+import "package:bday_fish_calendar/view/calendar/day.dart";
 import "package:flutter/material.dart";
 
 class MonthWidget extends StatelessWidget {
@@ -8,19 +8,30 @@ class MonthWidget extends StatelessWidget {
   final DateTime time;
 
   @override
-  Widget build(BuildContext context) {
-    final List<List<DateTime>> monthWeeks = time.monthWeeks;
-    return Column(
+  Widget build(BuildContext context) => Card(
+    clipBehavior: Clip.antiAlias,
+    child: Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          time.monthName,
-          style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+        ColoredBox(
+          color: Theme.of(context).colorScheme.onPrimary,
+          child: Center(
+            child: Text(
+              time.monthName,
+              style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
+          ),
         ),
-        for (final week in monthWeeks)
-          WeekWidget(time: week.first, month: time.month),
+        Expanded(
+          child: GridView.count(
+            crossAxisCount: 7,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            children: [...time.monthDaysPadded.map((e) => DayWidget(time: e))],
+          ),
+        ),
       ],
-    );
-  }
+    ),
+  );
 }

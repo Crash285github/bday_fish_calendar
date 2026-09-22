@@ -10,6 +10,9 @@ class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
   @override
-  Widget build(BuildContext context) =>
-      MaterialApp(theme: appTheme, home: const HomePage());
+  Widget build(BuildContext context) => MaterialApp(
+    theme: appTheme,
+    home: const HomePage(),
+    debugShowCheckedModeBanner: false,
+  );
 }
