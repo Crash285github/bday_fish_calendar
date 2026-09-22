@@ -19,7 +19,11 @@ class MonthWidget extends StatelessWidget {
           child: Center(
             child: Text(
               time.monthName,
-              style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+                fontFamily: "BabyDoll",
+              ),
             ),
           ),
         ),

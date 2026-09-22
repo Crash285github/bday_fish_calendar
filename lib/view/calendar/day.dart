@@ -10,6 +10,11 @@ class DayWidget extends StatelessWidget {
   Widget build(BuildContext context) => SizedBox(
     height: 64,
     width: 64,
-    child: Center(child: Text(time?.ordinalDay ?? "")),
+    child: Center(
+      child: Text(
+        time?.ordinalDay ?? "",
+        style: const TextStyle(fontFamily: "BabyDoll"),
+      ),
+    ),
   );
 }

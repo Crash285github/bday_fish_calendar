@@ -22,7 +22,7 @@ class AppNavigationBar extends StatelessWidget {
               ),
               Text(
                 AppModel().selectedYear.toString(),
-                style: const TextStyle(fontSize: 48),
+                style: const TextStyle(fontSize: 48, fontFamily: "BabyDoll"),
               ),
               IconButton(
                 icon: const Icon(Icons.arrow_forward, size: 48),
