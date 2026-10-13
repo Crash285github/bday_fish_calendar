@@ -17,12 +17,17 @@ class MonthWidget extends StatelessWidget {
         ColoredBox(
           color: Theme.of(context).colorScheme.onPrimary,
           child: Center(
-            child: Text(
-              time.monthName,
-              style: const TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                fontFamily: "BabyDoll",
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: FittedBox(
+                child: Text(
+                  time.monthName,
+                  style: const TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "BabyDoll",
+                  ),
+                ),
               ),
             ),
           ),
